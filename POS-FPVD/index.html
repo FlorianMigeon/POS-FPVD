@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogue POS — FPVD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="app">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="header-title">
+          <h1>Catalogue POS</h1>
+          <p class="subtitle">Objets promotionnels &amp; publicitaires — usage interne</p>
+        </div>
+        <div class="header-meta">
+          <span id="updated-at"></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <div class="toolbar-inner">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+          <input type="search" id="search" placeholder="Rechercher un article, un code…" autocomplete="off">
+        </div>
+        <button id="btn-pdf" class="btn-pdf" title="Générer le PDF de la sélection">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Catalogue PDF</span>
+        </button>
+      </div>
+      <div class="brand-filters" id="brand-filters"></div>
+    </div>
+
+    <main>
+      <p class="result-count" id="result-count"></p>
+      <div class="grid" id="grid"></div>
+      <p class="empty" id="empty" hidden>Aucun article ne correspond à votre recherche.</p>
+    </main>
+
+    <footer class="site-footer">
+      <p>Document interne — ne pas diffuser. Les prix indiqués sont les prix de vente conseillés.</p>
+    </footer>
+  </div>
+
+  <!-- Vue imprimable (PDF) -->
+  <div id="print-view" aria-hidden="true"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

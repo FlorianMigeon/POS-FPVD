@@ -1,0 +1,406 @@
+/* ============================================================
+   Catalogue POS — FPVD
+   ============================================================ */
+
+:root {
+  --bordeaux: #5e1a2e;
+  --bordeaux-dark: #43121f;
+  --gold: #b08d57;
+  --cream: #faf7f2;
+  --ink: #2b2723;
+  --ink-soft: #6f675e;
+  --line: #e6dfd5;
+  --card: #ffffff;
+  --radius: 10px;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ---------- En-tête ---------- */
+
+.site-header {
+  background: var(--bordeaux);
+  color: #fff;
+  border-bottom: 3px solid var(--gold);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header-title h1 {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: #d9c4b2;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.header-meta {
+  font-size: 12px;
+  color: #d9c4b2;
+}
+
+/* ---------- Barre d'outils ---------- */
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 247, 242, 0.96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.toolbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px 10px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 16px;
+  max-width: 420px;
+}
+
+.search-wrap svg { width: 16px; height: 16px; color: var(--ink-soft); flex: none; }
+
+.search-wrap input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  background: transparent;
+}
+
+.btn-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bordeaux);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-pdf:hover { background: var(--bordeaux-dark); }
+.btn-pdf svg { width: 15px; height: 15px; }
+
+.brand-filters {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+
+.chip:hover { border-color: var(--gold); color: var(--bordeaux); }
+
+.chip.active {
+  background: var(--bordeaux);
+  border-color: var(--bordeaux);
+  color: #fff;
+}
+
+/* ---------- Grille ---------- */
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+}
+
+.result-count {
+  color: var(--ink-soft);
+  font-size: 12px;
+  margin: 0 0 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(67, 18, 31, 0.10);
+  transform: translateY(-2px);
+}
+
+.card-img {
+  aspect-ratio: 1 / 1;
+  background: #f3efe8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.card-body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.card-brand {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--bordeaux-dark);
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.card-footer {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.card-price { font-weight: 600; color: var(--bordeaux); }
+.card-uvc { color: var(--ink-soft); }
+
+.card-code {
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.03em;
+}
+
+.empty {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 60px 0;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 11px;
+  padding: 18px;
+}
+
+@media (max-width: 640px) {
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .toolbar-inner { flex-wrap: wrap; }
+}
+
+/* ============================================================
+   Vue imprimable — catalogue PDF par marque
+   ============================================================ */
+
+#print-view { display: none; }
+
+@media print {
+  @page { size: A4; margin: 14mm 12mm; }
+
+  body { background: #fff; }
+  #app { display: none; }
+  #print-view { display: block; }
+
+  .print-cover {
+    text-align: center;
+    padding: 40mm 0 10mm;
+    page-break-after: always;
+  }
+
+  .print-cover .rule {
+    width: 60mm;
+    height: 1px;
+    background: var(--gold);
+    margin: 8mm auto;
+  }
+
+  .print-cover h1 {
+    font-family: var(--font-display);
+    font-size: 34pt;
+    font-weight: 600;
+    color: var(--bordeaux);
+    margin: 0;
+    letter-spacing: 0.05em;
+  }
+
+  .print-cover .cover-sub {
+    font-size: 11pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 4mm 0 0;
+  }
+
+  .print-cover .cover-date {
+    font-size: 9pt;
+    color: var(--ink-soft);
+    margin-top: 2mm;
+  }
+
+  .print-brand-title {
+    font-family: var(--font-display);
+    font-size: 18pt;
+    font-weight: 600;
+    color: var(--bordeaux);
+    border-bottom: 1.5pt solid var(--gold);
+    padding-bottom: 2mm;
+    margin: 0 0 5mm;
+    page-break-after: avoid;
+  }
+
+  .print-section { page-break-before: always; }
+  .print-section:first-of-type { page-break-before: avoid; }
+  .print-cover + .print-section { page-break-before: avoid; }
+
+  .print-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5mm;
+  }
+
+  .print-card {
+    border: 0.5pt solid #cfc6b8;
+    border-radius: 2mm;
+    overflow: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-card .card-img {
+    aspect-ratio: 1 / 1;
+    background: #f6f3ed;
+  }
+
+  .print-card .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 2mm;
+  }
+
+  .print-card .p-body { padding: 2.5mm 3mm 3mm; }
+
+  .print-card .p-name {
+    font-family: var(--font-display);
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--bordeaux-dark);
+    line-height: 1.15;
+  }
+
+  .print-card .p-sub {
+    font-size: 7.5pt;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .print-card .p-line {
+    margin-top: 1.5mm;
+    font-size: 8pt;
+    display: flex;
+    justify-content: space-between;
+    gap: 2mm;
+  }
+
+  .print-card .p-price { font-weight: 600; color: var(--bordeaux); }
+  .print-card .p-uvc { color: var(--ink-soft); }
+  .print-card .p-code { font-size: 7pt; color: var(--ink-soft); margin-top: 0.5mm; }
+
+  .print-footer-note {
+    margin-top: 6mm;
+    font-size: 7pt;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+}

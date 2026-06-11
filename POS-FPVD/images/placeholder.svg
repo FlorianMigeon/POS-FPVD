@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#f3efe8"/>
+  <g fill="none" stroke="#cfc6b8" stroke-width="6" stroke-linecap="round">
+    <rect x="120" y="100" width="160" height="200" rx="12"/>
+    <circle cx="170" cy="160" r="18"/>
+    <path d="M132 268 L190 205 L225 240 L252 215 L288 255"/>
+  </g>
+  <text x="200" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#b08d57" letter-spacing="2">VISUEL À VENIR</text>
+</svg>
